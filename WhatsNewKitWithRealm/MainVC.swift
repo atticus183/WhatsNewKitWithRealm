@@ -14,13 +14,13 @@ import WhatsNewKit
 class MainVC: UIViewController {
     
     let realm = MyRealm.getConfig()
-    var userVersion = 0.0
+    var userVersion = "1.3"
     
     @IBOutlet weak var startOverBtnOutlet: UIButton!
     @IBAction func startOverBtn(_ sender: UIButton) {
         try! realm?.write {
             if let userSetting = realm?.objects(UserSettings.self).first {
-                userSetting.userVersion = 1.3
+                userSetting.userOnVersion = "1.3"
             }
         }
         
@@ -40,7 +40,7 @@ class MainVC: UIViewController {
                 }
             }
             
-            userVersion = realm.objects(UserSettings.self).first?.userVersion ?? 0.0
+            userVersion = realm.objects(UserSettings.self).first?.userOnVersion ?? "1.3"
     
             //Retrieve on-disk realm url
             print(realm.configuration.fileURL)

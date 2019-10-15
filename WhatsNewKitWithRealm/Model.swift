@@ -11,6 +11,6 @@ import RealmSwift
 
 
 class UserSettings: Object {
-    @objc dynamic var userVersion: Double = 1.0
+    @objc dynamic var userOnVersion: String = "1.4"
 }
 

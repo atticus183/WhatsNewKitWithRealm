@@ -13,20 +13,20 @@ struct WhatsNewData {
     let title: String
     let assetImgName: String
     let description: String
-    let versionNumber: Double
+    let versionNumber: String
 }
 
 struct WhatsNewFeatures {
-    static var newestVersion: Double {
-        return allVersions.last ?? 0.0
+    static var newestVersion: String {
+        return allVersions.last ?? "1.3"
     }
     
-    static var retrieveUserVersion: Double {
+    static var retrieveUserVersion: String {
         let realm = MyRealm.getConfig()
-        return realm?.objects(UserSettings.self).first?.userVersion ?? 0.0
+        return realm?.objects(UserSettings.self).first?.userOnVersion ?? "1.3"
     }
     
-    static let allVersions = [1.4, 1.5]
+    static let allVersions = ["1.4", "1.5"]
     
     static let allFeatures = [
         //1.4
@@ -42,24 +42,24 @@ struct WhatsNewFeatures {
     ]
     
     //MARK: 1.4 Features
-    static let distanceFromLocation = WhatsNewData(title: "Location Distance", assetImgName: "location", description: "See how far away a search location is to your current location.", versionNumber: 1.4)
-    static let iconsSearch = WhatsNewData(title: "Search Category Icons", assetImgName: "account", description: "Quickly search for category icons using key words.", versionNumber: 1.4)
-    static let seeParentAmount = WhatsNewData(title: "View Parent Category Amount", assetImgName: "category", description: "Now see statistics about parent categories.", versionNumber: 1.4)
+    static let distanceFromLocation = WhatsNewData(title: "Location Distance", assetImgName: "location", description: "See how far away a search location is to your current location.", versionNumber: "1.4")
+    static let iconsSearch = WhatsNewData(title: "Search Category Icons", assetImgName: "account", description: "Quickly search for category icons using key words.", versionNumber: "1.4")
+    static let seeParentAmount = WhatsNewData(title: "View Parent Category Amount", assetImgName: "category", description: "Now see statistics about parent categories.", versionNumber: "1.4")
     
     //MARK: 1.5 Features
-    static let csvExporter = WhatsNewData(title: "CSV Exporter", assetImgName: "apple watch smart device wearable", description: "Export all you transactions to a csv file for further analysis.", versionNumber: 1.5)
-    static let defaultAccount = WhatsNewData(title: "Set Default Account", assetImgName: "account", description: "Set a default account for new transactions.", versionNumber: 1.5)
-    static let historicalBudgets = WhatsNewData(title: "See Historical Budgets", assetImgName: "budget", description: "View all the past budgets of a specific budget.", versionNumber: 1.5)
-    static let hapticFeedback = WhatsNewData(title: "Haptic Feedback", assetImgName: "finger", description: "Haptic feedback when entering a transaction amount, marking a transaction as cleared, and more.", versionNumber: 1.5)
+    static let csvExporter = WhatsNewData(title: "CSV Exporter", assetImgName: "apple watch smart device wearable", description: "Export all you transactions to a csv file for further analysis.", versionNumber: "1.5")
+    static let defaultAccount = WhatsNewData(title: "Set Default Account", assetImgName: "account", description: "Set a default account for new transactions.", versionNumber: "1.5")
+    static let historicalBudgets = WhatsNewData(title: "See Historical Budgets", assetImgName: "budget", description: "View all the past budgets of a specific budget.", versionNumber: "1.5")
+    static let hapticFeedback = WhatsNewData(title: "Haptic Feedback", assetImgName: "finger", description: "Haptic feedback when entering a transaction amount, marking a transaction as cleared, and more.", versionNumber: "1.5")
     
     
     //Retrieve features by version #
-    static func retrieveFeatures(for version: Double) -> [WhatsNewData] {
+    static func retrieveFeatures(for version: String) -> [WhatsNewData] {
         return allFeatures.filter({ $0.versionNumber == version })
     }
     
     //Used to retrieve all versions greater than the user's current version
-    static func retrieveVersions(startingAt version: Double) -> [Double] {
+    static func retrieveVersions(startingAt version: String) -> [String] {
         return allVersions.filter({ $0 > version })
     }
 }
@@ -83,7 +83,7 @@ struct WhatsNewManager {
         let userVersionNumber = WhatsNewFeatures.retrieveUserVersion
         
         let featuresToDisplayVersion = WhatsNewFeatures.retrieveVersions(startingAt: userVersionNumber)
-        let features = WhatsNewFeatures.retrieveFeatures(for: featuresToDisplayVersion.first ?? 0.0)
+        let features = WhatsNewFeatures.retrieveFeatures(for: featuresToDisplayVersion.first ?? "1.3")
         
         var newItems = [WhatsNewKit.WhatsNew.Item]()
         
@@ -98,7 +98,7 @@ struct WhatsNewManager {
             newItems.append(whatsNewItem)
         }
         
-        let newFeatureItem = WhatsNewKit.WhatsNew(title: "\(featuresToDisplayVersion.first ?? 0.0) New Features", items: newItems)
+        let newFeatureItem = WhatsNewKit.WhatsNew(title: "\(featuresToDisplayVersion.first ?? "1.3") New Features", items: newItems)
         
         //MARK: WhatsNew Config
         var configuration = WhatsNewViewController.Configuration()
@@ -122,7 +122,7 @@ struct WhatsNewManager {
                 
                 try! realm?.write {
                     let userSettings = realm?.objects(UserSettings.self).first!
-                    userSettings?.userVersion = featuresToDisplayVersion[0]
+                    userSettings?.userOnVersion = featuresToDisplayVersion[0]
                 }
                 
                 if featuresToDisplayVersion.count > 1 {

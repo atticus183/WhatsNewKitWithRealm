@@ -16,7 +16,7 @@
 		12DF174B23527B2100DB7F73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12DF174923527B2100DB7F73 /* LaunchScreen.storyboard */; };
 		12DF17532352802800DB7F73 /* Realm Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DF17522352802800DB7F73 /* Realm Config.swift */; };
 		12DF17552352817900DB7F73 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DF17542352817900DB7F73 /* Model.swift */; };
-		12DF17572352818300DB7F73 /* Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DF17562352818300DB7F73 /* Datasource.swift */; };
+		12DF17572352818300DB7F73 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DF17562352818300DB7F73 /* WhatsNew.swift */; };
 		25327943169B3D6033FF60E3 /* Pods_WhatsNewKitWithRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3446CDAEA8EDB01360BC5209 /* Pods_WhatsNewKitWithRealm.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +33,7 @@
 		12DF174C23527B2100DB7F73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12DF17522352802800DB7F73 /* Realm Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm Config.swift"; sourceTree = "<group>"; };
 		12DF17542352817900DB7F73 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		12DF17562352818300DB7F73 /* Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datasource.swift; sourceTree = "<group>"; };
+		12DF17562352818300DB7F73 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		3446CDAEA8EDB01360BC5209 /* Pods_WhatsNewKitWithRealm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsNewKitWithRealm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1FAD0CE6838A4D6FA2A0192 /* Pods-WhatsNewKitWithRealm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsNewKitWithRealm.release.xcconfig"; path = "Target Support Files/Pods-WhatsNewKitWithRealm/Pods-WhatsNewKitWithRealm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,7 +80,7 @@
 				12DF174C23527B2100DB7F73 /* Info.plist */,
 				12DF17522352802800DB7F73 /* Realm Config.swift */,
 				12DF17542352817900DB7F73 /* Model.swift */,
-				12DF17562352818300DB7F73 /* Datasource.swift */,
+				12DF17562352818300DB7F73 /* WhatsNew.swift */,
 				12A5B8542354215F001D099E /* Extensions.swift */,
 			);
 			path = WhatsNewKitWithRealm;
@@ -218,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12DF17572352818300DB7F73 /* Datasource.swift in Sources */,
+				12DF17572352818300DB7F73 /* WhatsNew.swift in Sources */,
 				12DF17552352817900DB7F73 /* Model.swift in Sources */,
 				12DF17532352802800DB7F73 /* Realm Config.swift in Sources */,
 				12DF174323527B1F00DB7F73 /* MainVC.swift in Sources */,
