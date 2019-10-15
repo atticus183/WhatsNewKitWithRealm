@@ -67,6 +67,12 @@ struct WhatsNewFeatures {
 //MARK: What's New VC Setup
 struct WhatsNewManager {
     
+    static func launchWhatsNew(in vc: UIViewController) {
+        if WhatsNewFeatures.newestVersion != WhatsNewFeatures.retrieveUserVersion {
+            WhatsNewManager.createInitialWhatsNewVC(in: vc, whatsNewVC: WhatsNewManager.createWhatsNewVC())
+        }
+    }
+    
     //Creates the first WhatsNewVC with a navigation controller
     static func createInitialWhatsNewVC(in vc: UIViewController, whatsNewVC: WhatsNewViewController) {
         let navigationVC = UINavigationController(rootViewController: whatsNewVC)

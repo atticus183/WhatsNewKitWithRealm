@@ -24,7 +24,7 @@ class MainVC: UIViewController {
             }
         }
         
-        launchWhatsNew()
+         WhatsNewManager.launchWhatsNew(in: self)
     }
     
 
@@ -39,9 +39,6 @@ class MainVC: UIViewController {
                     realm.add(userSettings)
                 }
             }
-            
-            userVersion = realm.objects(UserSettings.self).first?.userOnVersion ?? "1.3"
-    
             //Retrieve on-disk realm url
             print(realm.configuration.fileURL)
         }
@@ -52,13 +49,7 @@ class MainVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        launchWhatsNew()
-    }
-    
-    private func launchWhatsNew() {
-        if WhatsNewFeatures.newestVersion != WhatsNewFeatures.retrieveUserVersion {
-            WhatsNewManager.createInitialWhatsNewVC(in: self, whatsNewVC: WhatsNewManager.createWhatsNewVC())
-        }
+        WhatsNewManager.launchWhatsNew(in: self)
     }
 
 }
